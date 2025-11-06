@@ -30,23 +30,40 @@ jobs:
           cache: 'npm'
       
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm list --depth=0 || true
       
       - name: Set basePath
         id: basepath
         run: |
+          REPO_NAME="${{ github.event.repository.name }}"
           if [ "${{ github.repository }}" = "${{ github.repository_owner }}/${{ github.repository_owner }}.github.io" ]; then
             echo "basepath=" >> $GITHUB_OUTPUT
+            echo "Using empty basePath for user.github.io"
           else
-            REPO_NAME="${{ github.event.repository.name }}"
             echo "basepath=/$REPO_NAME" >> $GITHUB_OUTPUT
+            echo "Using basePath: /$REPO_NAME"
           fi
+          echo "Repository: ${{ github.repository }}"
+          echo "Repository Name: $REPO_NAME"
+          echo "BasePath will be: ${{ steps.basepath.outputs.basepath }}"
       
       - name: Build with Next.js
         run: npm run build
         env:
           NODE_ENV: production
           NEXT_PUBLIC_BASE_PATH: ${{ steps.basepath.outputs.basepath }}
+        continue-on-error: false
+      
+      - name: Verify build output
+        run: |
+          if [ ! -d "out" ]; then
+            echo "Error: 'out' directory not found!"
+            exit 1
+          fi
+          echo "Build output found in 'out' directory"
+          ls -la out | head -20
       
       - name: Add .nojekyll file
         run: touch ./out/.nojekyll
