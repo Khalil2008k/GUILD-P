@@ -32,10 +32,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
+      - name: Set basePath
+        id: basepath
+        run: |
+          if [ "${{ github.repository }}" = "${{ github.repository_owner }}/${{ github.repository_owner }}.github.io" ]; then
+            echo "basepath=" >> $GITHUB_OUTPUT
+          else
+            echo "basepath=/${{ github.event.repository.name }}" >> $GITHUB_OUTPUT
+          fi
+      
       - name: Build with Next.js
         run: npm run build
         env:
           NODE_ENV: production
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.basepath.outputs.basepath }}
       
       - name: Add .nojekyll file
         run: touch ./out/.nojekyll
