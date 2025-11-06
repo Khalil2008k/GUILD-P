@@ -11,13 +11,17 @@ export default function Robot3DPage() {
       {/* Color overlay for tinting */}
       <div className="absolute inset-0 z-[1] bg-[#BDFF2A] opacity-10 mix-blend-overlay pointer-events-none" />
       
-      <InteractiveRobotSpline
-        scene={ROBOT_SCENE_URL}
+      <div 
         className="absolute inset-0 z-0"
         style={{
           filter: 'hue-rotate(80deg) saturate(1.2) brightness(1.1)',
-        } as React.CSSProperties}
-      />
+        }}
+      >
+        <InteractiveRobotSpline
+          scene={ROBOT_SCENE_URL}
+          className="w-full h-full"
+        />
+      </div>
     
       <div className="
         absolute inset-0 z-10
