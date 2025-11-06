@@ -227,27 +227,33 @@ export default function TestCardsPage() {
                               : 'bg-[#1A1A1A] border-[#2A2A2A] hover:border-[#BDFF2A]/30'
                           }`}
                         >
-                          <p
-                            className={`font-bold mb-1 ${
-                              card.featured ? 'text-black' : 'text-white'
-                            }`}
-                          >
-                            {item.title}
-                          </p>
-                          <p
-                            className={`text-sm mb-2 ${
-                              card.featured ? 'text-black/70' : 'text-[#BDFF2A]'
-                            }`}
-                          >
-                            {item.price}
-                          </p>
-                          <p
-                            className={`text-xs ${
-                              card.featured ? 'text-black/60' : 'text-[#666666]'
-                            }`}
-                          >
-                            {item.desc}
-                          </p>
+                          {'title' in item && (
+                            <p
+                              className={`font-bold mb-1 ${
+                                card.featured ? 'text-black' : 'text-white'
+                              }`}
+                            >
+                              {item.title}
+                            </p>
+                          )}
+                          {'price' in item && (
+                            <p
+                              className={`text-sm mb-2 ${
+                                card.featured ? 'text-black/70' : 'text-[#BDFF2A]'
+                              }`}
+                            >
+                              {item.price}
+                            </p>
+                          )}
+                          {'desc' in item && (
+                            <p
+                              className={`text-xs ${
+                                card.featured ? 'text-black/60' : 'text-[#666666]'
+                              }`}
+                            >
+                              {item.desc}
+                            </p>
+                          )}
                         </div>
                       )}
                     </div>
