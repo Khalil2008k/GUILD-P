@@ -208,7 +208,7 @@ export default function TestCardsPage() {
                             >
                               {item.text}
                             </p>
-                            {item.subtext && (
+                            {'subtext' in item && item.subtext && (
                               <p
                                 className={`text-sm ${
                                   card.featured ? 'text-black/60' : 'text-[#666666]'
