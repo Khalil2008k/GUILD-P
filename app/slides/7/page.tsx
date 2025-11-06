@@ -193,9 +193,9 @@ export default function Slide7() {
                     </div>
 
                     <div>
-                      <p className="text-white font-semibold mb-2">If it doesn't, provide instructions on how to setup project via shadcn CLI, install Tailwind or Typescript.</p>
+                      <p className="text-white font-semibold mb-2">If it doesn&apos;t, provide instructions on how to setup project via shadcn CLI, install Tailwind or Typescript.</p>
                       <p className="mb-1">Determine the default path for components and styles.</p>
-                      <p className="mb-2">If default path for components is not /components/ui, provide instructions on why it's important to create this folder</p>
+                      <p className="mb-2">If default path for components is not /components/ui, provide instructions on why it&apos;s important to create this folder</p>
                     </div>
 
                     <div>
@@ -311,7 +311,7 @@ export default function DemoOne() {
                       <p className="text-white font-semibold mb-2">Implementation Guidelines:</p>
                       <ol className="list-decimal list-inside mr-4 space-y-1 mt-1">
                         <li>Analyze the component structure and identify all required dependencies</li>
-                        <li>Review the component's arguments and state</li>
+                        <li>Review the component&apos;s arguments and state</li>
                         <li>Identify any required context providers or hooks and install them</li>
                         <li>Questions to Ask - What data/props will be passed to this component? Are there any specific state management requirements? Are there any required assets (images, icons, etc.)? What is the expected responsive behavior? What is the best place to use this component in the app?</li>
                       </ol>
