@@ -10,7 +10,7 @@ export default function SlideNavigation() {
   const pathname = usePathname()
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isNavigating, setIsNavigating] = useState(false)
-  const totalSlides = 11 // 0-11 (0 is bismillah, 1-11 are content slides)
+  const totalSlides = 12 // 0-11 (0 is bismillah, 1-11 are content slides)
 
   useEffect(() => {
     if (pathname) {

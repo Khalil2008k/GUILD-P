@@ -7,7 +7,15 @@ import { useEffect, useState } from 'react'
 export default function NavigationDots() {
   const router = useRouter()
   const pathname = usePathname()
-  const [currentSlide, setCurrentSlide] = useState<number | 'splash'>(1)
+  
+  // Initialize currentSlide based on pathname
+  const [currentSlide, setCurrentSlide] = useState<number | 'splash'>(() => {
+    if (typeof window === 'undefined') return 0
+    const currentPath = window.location.pathname
+    if (currentPath === '/splash') return 'splash'
+    const match = currentPath.match(/\/slides\/(\d+)/)
+    return match ? parseInt(match[1]) : 0
+  })
 
   useEffect(() => {
     // Extract slide number from pathname or check for splash
@@ -18,6 +26,8 @@ export default function NavigationDots() {
         const match = pathname.match(/\/slides\/(\d+)/)
         if (match) {
           setCurrentSlide(parseInt(match[1]))
+        } else {
+          setCurrentSlide(0)
         }
       }
     }
