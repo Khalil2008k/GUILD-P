@@ -33,7 +33,7 @@ export default function NavigationDots() {
     }
   }, [pathname])
 
-  const totalSlides = 12 // 0-11 (0 is bismillah, 1-11 are content slides)
+  const totalSlides = 12 // Slides 0-11 (12 slides) + 1 splash = 13 total screens
 
   const handleDotClick = (slideNum: number | 'splash') => {
     if (slideNum === 'splash') {
